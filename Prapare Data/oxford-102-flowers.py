@@ -9,14 +9,16 @@ from torchvision.datasets.utils import download_and_extract_archive
 import shutil
 
 
+data_folder = 'data/flowers'
+
 URL = "https://s3.amazonaws.com/fast-ai-imageclas/oxford-102-flowers.tgz"
-download_and_extract_archive(URL, '.')
+download_and_extract_archive(URL, data_folder)
 
 
 #os.listdir('oxford-102-flowers/train.txt')
-train_dir = pd.read_csv('oxford-102-flowers/train.txt', header=None, delimiter=' ')
-valid_dir = pd.read_csv('oxford-102-flowers/valid.txt', header=None, delimiter=' ')
-test_dir = pd.read_csv('oxford-102-flowers/test.txt', header=None, delimiter=' ')
+train_dir = pd.read_csv(data_folder + '/oxford-102-flowers/train.txt', header=None, delimiter=' ')
+valid_dir = pd.read_csv(data_folder + '/oxford-102-flowers/valid.txt', header=None, delimiter=' ')
+test_dir = pd.read_csv(data_folder + '/oxford-102-flowers/test.txt', header=None, delimiter=' ')
 
 train_dir.shape, valid_dir.shape, test_dir.shape
 
@@ -32,18 +34,18 @@ def add_zero(n):
 
 data_pt = ['train', 'val', 'test']
 for main_pt in data_pt:
-    os.mkdir(main_pt)
+    os.mkdir(data_folder + '/' + main_pt)
     for lab in range(102):
-      os.mkdir(main_pt+'/'+add_zero(lab))
+      os.mkdir(data_folder + '/' + main_pt + '/' + add_zero(lab))
 
 
 
 
-main_path = 'oxford-102-flowers/'
+main_path = data_folder + '/oxford-102-flowers/'
 
-train_path = 'train/'
-valid_path = 'val/'
-test_path = 'test/'
+train_path = data_folder + '/train/'
+valid_path = data_folder + '/val/'
+test_path =  data_folder + '/test/'
 
 # lets move the images to the given directories
 

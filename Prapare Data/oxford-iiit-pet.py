@@ -4,15 +4,16 @@ from torchvision.datasets.utils import download_and_extract_archive
 import shutil
 import pdb
 
+data_folder = 'data/pets'
 
 URL = "https://www.robots.ox.ac.uk/~vgg/data/pets/data/annotations.tar.gz"
-download_and_extract_archive(URL, '.')
+download_and_extract_archive(URL, data_folder)
 URL = "https://www.robots.ox.ac.uk/~vgg/data/pets/data/images.tar.gz"
-download_and_extract_archive(URL, '.')
+download_and_extract_archive(URL, data_folder)
 
 
-train_dir = pd.read_csv('annotations/trainval.txt', header=None, delimiter=' ')
-test_dir = pd.read_csv('annotations/test.txt', header=None, delimiter=' ')
+train_dir = pd.read_csv(data_folder + '/annotations/trainval.txt', header=None, delimiter=' ')
+test_dir = pd.read_csv(data_folder + '/annotations/test.txt', header=None, delimiter=' ')
 
 
 
@@ -30,25 +31,23 @@ def add_zero(n):
 
 data_pt = ['train', 'val']
 for main_pt in data_pt:
-    os.mkdir(main_pt)
+    os.mkdir(data_folder + '/' + main_pt)
     for lab in range(37):
-      os.mkdir(main_pt+'/'+add_zero(lab))
+      os.mkdir(data_folder + '/' + main_pt + '/' + add_zero(lab))
 
 
+main_path = data_folder + '/images/'
 
-
-main_path = 'images/'
-
-train_path = 'train/'
-valid_path = 'val/'
+train_path = data_folder + '/train/'
+valid_path = data_folder + '/val/'
 
 # lets move the images to the given directories
 
 for value in train_dir.values:
-    shutil.move(main_path+value[0]+'.jpg', train_path+add_zero(value[1] - 1))
+    shutil.move(main_path + value[0] + '.jpg', train_path + add_zero(value[1] - 1))
 
 # we use test data as val images
 for value in test_dir.values:
-    shutil.move(main_path+value[0] +'.jpg', valid_path+add_zero(value[1] - 1))
+    shutil.move(main_path + value[0] + '.jpg', valid_path + add_zero(value[1] - 1))
 
 

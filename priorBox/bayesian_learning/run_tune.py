@@ -1,5 +1,5 @@
 """Run ray tune for hyper parameters search"""
-import tune
+import ray.tune as tune
 from ray.tune import CLIReporter
 from ray.tune.suggest import ConcurrencyLimiter
 from ray.tune.suggest.hyperopt import HyperOptSearch

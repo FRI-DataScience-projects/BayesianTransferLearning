@@ -37,7 +37,7 @@ def parse_args_SBL(parser):
     # Configuration
     parser.add_argument('--num_of_labels', type=int, default=10, help='num_classes')
     parser.add_argument('--seed', type=int, default=1, help='Fix seed')
-    parser.add_argument('--gpus', default=1, help='number of parallel gpus')
+    parser.add_argument('--gpus', type=int, default=1, help='number of parallel gpus')
     parser.add_argument('--num_workers', type=int, default=4, help='number of workers for processing the data')
     parser.add_argument('--g_run', type=str, default='f', help='The cluster to run gauss, local or greence')
     parser.add_argument('--g_path', type=str, default='/path/to/your/dir', help='add it to the path')

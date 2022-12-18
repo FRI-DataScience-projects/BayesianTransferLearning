@@ -1,0 +1,63 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Bayesian flowers",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "args": [
+                "--job=supervised_bayesian_learning",
+                "--prior_path=C:/Users/Tinka/Documents/FRI/MLDS2/BayesianTransferLearning/priors/resnet50_torchvision/resnet50_torchvision",
+                "--local_dir=C:/Users/Tinka/Documents/FRI/MLDS2/BayesianTransferLearning/data/flowers/",
+                "--data_dir=C:/Users/Tinka/Documents/FRI/MLDS2/BayesianTransferLearning/data/flowers/",
+                "--train_dir=train/",
+                "--val_dir=val/",
+                "--samples_dir=C:/Users/Tinka/Documents/FRI/MLDS2/BayesianTransferLearning/data/flowers/",
+                "--train_dataset=oxford102flowers",
+                "--val_dataset=oxford102flowers",
+                "--ignore_wandb",
+                "--encoder=resnet50",
+                "--gpus=1",
+                "--batch_size=2",
+                "--num_of_labels=102"
+            ]
+        },
+        {
+            "name": "Bayesian pets",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "--job=supervised_bayesian_learning",
+                "--prior_path=C:/Users/Tinka/Documents/FRI/MLDS2/BayesianTransferLearning/priors/resnet50_torchvision/resnet50_torchvision",
+                "--local_dir=C:/Users/Tinka/Documents/FRI/MLDS2/BayesianTransferLearning/data/pets/",
+                "--data_dir=C:/Users/Tinka/Documents/FRI/MLDS2/BayesianTransferLearning/data/pets/",
+                "--train_dir=train/",
+                "--val_dir=val/",
+                "--samples_dir=C:/Users/Tinka/Documents/FRI/MLDS2/BayesianTransferLearning/data/pets/",
+                "--train_dataset=oxfordpets",
+                "--val_dataset=oxfordpets",
+                "--ignore_wandb",
+                "--encoder=resnet50",
+                "--gpus=1",
+                "--batch_size=8"
+            ]
+        }
+    ]
+}

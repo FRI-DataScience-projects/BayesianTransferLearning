@@ -13,6 +13,7 @@ if __name__ == "__main__":
     start_time = time.time()
 
     if 'prior' in args.job:
+        args.wandb = False
         prior = priorBox.Prior(args)
         prior.learn_prior()
         train_posterior_time = time.time()

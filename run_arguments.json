@@ -58,6 +58,27 @@
                 "--gpus=1",
                 "--batch_size=8"
             ]
+        },
+        {
+            "name": "Bayesian PRIOR",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "args": [
+                "--job=prior_SSL",
+                "--dataset=custom",
+                "--data_dir=C:/Users/Tinka/Documents/FRI/MLDS2/BayesianTransferLearning/data/flowers/",
+                "--train_dir=train/",
+                "--val_dir=val/",
+                "--brightness=50",
+                "--contrast=50", 
+                "--saturation=50",
+                "--hue=50",
+                "--optimizer=sgd",
+                "--max_epochs=1000"
+            ]
         }
     ]
 }
